@@ -2,8 +2,16 @@
 
 ## Használat
 
+Windows-on a [Docker Compose](https://docs.docker.com/compose/) projekt futtatásáhához [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) és [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)-re van szükség.
+
+Compose projekt futtatása:
+
 ```sh
-$ cd "/mnt/e/GAMF Üzemmérnök informatikus/TANANYAG_4/WEB-programozás I/WEBPROG1_BEADANDO_GYAK"
 $ docker compose up -d
+```
+
+Compose projekt leállítása:
+
+```sh
 $ docker compose down
 ```
