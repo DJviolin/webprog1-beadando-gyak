@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 }
 ?>
 
-<div class="container">
+<div id="galeria" class="container">
 	<h2 class="mb-4">Galéria</h2>
 
 	<div class="row mt-4">
