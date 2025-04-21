@@ -1,21 +1,64 @@
-<h2 class="mb-4">Lépjen kapcsolatba velünk</h2>
+<?php
+$fajtakHtml = '';
+try {
+	$dbh = new PDO(
+		$APP_CONFIG['db']['dsn'],
+		$APP_CONFIG['db']['user'],
+		$APP_CONFIG['db']['pass'],
+		array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)
+	);
+	$dbh->query('SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci');
+	$stmt = $dbh->query("SELECT fajta FROM keszlet");
+	foreach ($stmt as $row) {
+		$fajtakHtml .= "<option value=\"" . htmlspecialchars($row['fajta']) . "\">" . htmlspecialchars($row['fajta']) . "</option>";
+	}
+} catch (PDOException $e) {
+	$fajtakHtml = "<option value=\"\">" . htmlspecialchars($e->getMessage()) . "</option>";
+}
+?>
 
-<p>Készítő: <strong>Lanti</strong></p>
-<p>E-mail: <strong>webmaster[kukac]lanti.nethely.hu</strong></p>
-<p>Ha kérdése van, írjon nekünk az alábbi űrlap segítségével. Minden mező kitöltése kötelező.</p>
+<div class="container">
+	<div class="row">
+		<h2 class="mb-4">Lépjen kapcsolatba velünk</h2>
+		<p>Tulajdonos: <strong>Lanti</strong></p>
+		<p>Email: <strong>webmaster[kukac]lanti.nethely.hu</strong></p>
+		<p>Ha rendelni szeretne, írjon nekünk az alábbi űrlap segítségével. Minden mező kitöltése kötelező.</p>
+	</div>
+</div >
 
-<form action="index.php?kapcsolat" method="post" novalidate>
-	<div class="mb-3">
-		<label for="nev" class="form-label">Név</label>
-		<input type="text" class="form-control" id="nev" name="nev" required>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-6">
+		<form action="kapcsolat" method="post" novalidate>
+			<!-- Név -->
+			<div class="mb-3">
+				<label for="nev" class="form-label">Név</label>
+				<input type="text" class="form-control" id="nev" name="nev" required>
+			</div>
+			<!-- Email cím -->
+			<div class="mb-3">
+				<label for="email" class="form-label">Email cím</label>
+				<input type="email" class="form-control" id="email" name="email" required>
+			</div>
+			<!-- Törökszegfű fajták -->
+			<div class="mb-3">
+				<label for="fajta" class="form-label">Törökszegfű fajta</label>
+				<select class="form-control" id="fajta" name="fajta" required>
+					<option value="">Válasszon</option>
+					<?php echo $fajtakHtml; ?>
+				</select>
+			</div>
+			<!-- Mennyiség (db) -->
+			<div class="mb-3">
+				<label for="mennyiseg" class="form-label">Mennyiség (db)</label>
+				<input type="number" class="form-control" id="mennyiseg" name="mennyiseg" min="1" required>
+			</div>
+			<!-- Üzenet -->
+			<div class="mb-3">
+				<label for="uzenet" class="form-label">Üzenet</label>
+				<textarea class="form-control" id="uzenet" name="uzenet" rows="5" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Üzenet küldése</button>
+		</form>
 	</div>
-	<div class="mb-3">
-		<label for="email" class="form-label">E-mail cím</label>
-		<input type="email" class="form-control" id="email" name="email" required>
-	</div>
-	<div class="mb-3">
-		<label for="uzenet" class="form-label">Üzenet</label>
-		<textarea class="form-control" id="uzenet" name="uzenet" rows="5" required></textarea>
-	</div>
-	<button type="submit" class="btn btn-primary">Üzenet küldése</button>
-</form>
+</div>
