@@ -53,5 +53,5 @@ ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `uzenetek` (`felhasznalo`, `nev`, `email`, `telefon`, `fajta`, `mennyiseg`, `uzenet`) VALUES
-('User1', 'Teszt User_1', 'email1@domain.org', '+36123456789', 'Sweet Black Cherry (Dianthus Barbatus)', 100, NULL),
+('User1', 'Teszt User_1', 'user1@domain.org', '+36123456789', 'Sweet Black Cherry (Dianthus Barbatus)', 100, NULL),
 (NULL, 'Teszt Vendég', 'email2@domain.org', '+36223456789', 'Amazon Neon Cherry (Dianthus Barbatus)', 300, 'Második üzenet.');
