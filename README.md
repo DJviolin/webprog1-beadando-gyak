@@ -2,7 +2,7 @@
 
 ## Használat
 
-Fejlesztői környezetben a projekt futtatásához [Docker Engine](https://docs.docker.com/engine/install/) és [Docker Compose](https://docs.docker.com/compose/) környezet szükséges.
+Fejlesztői környezetben a projekt futtatásához [Docker Engine](https://docs.docker.com/engine/install/) és [Docker Compose](https://docs.docker.com/compose/)-ra van szükséges.
 
 Windows-on [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) és [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)-re van szükség.
 
