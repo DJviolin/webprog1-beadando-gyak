@@ -26,23 +26,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 <div id="kepek" class="container">
 	<h2 class="mb-4">Képek</h2>
 
-	<div class="row mt-4">
-		<?php if (isset($_SESSION['login']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-			<div class="row">
-				<form action="" method="post" enctype="multipart/form-data" class="mb-4">
-					<div class="mb-3">
-						<label for="kep" class="form-label">Kép feltöltése</label>
-						<input class="form-control" type="file" name="kep" id="kep" accept="image/*" required>
-					</div>
-					<button type="submit" class="btn btn-primary">Feltöltés</button>
-				</form>
-			</div>
-		<?php else: ?>
-			<div class="alert alert-info text-center fw-bold shadow-sm">
-				A képfeltöltés csak bejelentkezett "admin" jogosultságú felhasználók számára elérhető.
-			</div>
-		<?php endif; ?>
-	</div>
+	<?php if (isset($_SESSION['login'])): ?>
+		<div class="row mt-4">
+			<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+				<div class="row">
+					<form action="" method="post" enctype="multipart/form-data" class="mb-4">
+						<div class="mb-3">
+							<label for="kep" class="form-label">Kép feltöltése</label>
+							<input class="form-control" type="file" name="kep" id="kep" accept="image/*" required>
+						</div>
+						<button type="submit" class="btn btn-primary">Feltöltés</button>
+					</form>
+				</div>
+			<?php else: ?>
+				<div class="alert alert-info text-center fw-bold shadow-sm">
+					A képfeltöltés csak bejelentkezett "admin" jogosultságú felhasználók számára elérhető.
+				</div>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
 
 	<div class="row">
 		<p>A képek a szerző engedélye nélküli felhasználása minden esetben tilos! Ebbe beletartoznak az automatizált szoftverek is, például crawler-ek (kereső motorok, mesterséges intelligencia) stb.</p>
