@@ -32,7 +32,7 @@
 				<!-- Menü (összeomló rész) -->
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ms-auto">
-						<?php foreach ($oldalak as $url => $oldal) { ?>
+						<?php foreach ($APP_CONFIG['oldalak'] as $url => $oldal) { ?>
 							<?php if ((!isset($_SESSION['login']) && $oldal['menun'][0]) || (isset($_SESSION['login']) && $oldal['menun'][1])) { ?>
 								<li class="nav-item">
 									<a class="nav-link<?= ($oldal == $keres) ? ' active' : '' ?>"

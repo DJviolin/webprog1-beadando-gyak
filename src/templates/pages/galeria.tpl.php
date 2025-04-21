@@ -49,17 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 		<p>Fotók: &copy; <?= 'Copyright '.date("Y").'.' ?> <a href="https://lantosistvan.pixieset.com/">Lantos István</a></p>
 	</div>
 
-	<!-- <div class="row" data-masonry='{"percentPosition": true }'>
-		<?php
-		$dir = 'images/';
-		$files = array_diff(scandir($dir), ['.', '..']);
-		foreach ($files as $file): ?>
-			<div class="col-6 col-md-4 col-lg-3 mb-3">
-				<img src="<?= $dir . $file ?>" alt="Kép" class="img-fluid rounded shadow">
-			</div>
-		<?php endforeach; ?>
-	</div> -->
-
 	<div class="row" data-masonry='{"percentPosition": true }'>
 		<?php
 		$dir = 'images/';
@@ -71,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 		<?php endforeach; ?>
 	</div>
 
-	<div id="lightbox" class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center" style="z-index: 1055;">
+	<div id="lightbox" class="d-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex align-items-center justify-content-center" style="z-index: 1055;">
 		<button class="btn btn-light position-absolute top-0 end-0 m-3" id="closeBtn">&times;</button>
 		<button class="btn btn-light position-absolute start-0 ms-3" id="prevBtn">&#10094;</button>
 		<img id="lightboxImg" src="" class="img-fluid rounded shadow" style="max-height: 90vh;">
