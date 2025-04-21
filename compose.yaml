@@ -31,7 +31,7 @@ services:
     image: mariadb:11.7.2-noble
     volumes:
       - mariadb:/var/lib/mysql
-      - ./sql/adatbazis_dev.sql:/docker-entrypoint-initdb.d/adatbazis_dev.sql:ro
+      - ./sql:/docker-entrypoint-initdb.d:ro
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
       - TZ=Europe/Budapest
