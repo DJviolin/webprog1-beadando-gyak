@@ -53,7 +53,7 @@
 		<div class="container mt-4">
 			<?php if (isset($_SESSION['login'])) { ?>
 				<div class="alert alert-success text-center fw-bold shadow-sm">
-					Bejelentkezve: <?= $_SESSION['csn'] . " " . $_SESSION['un'] ?> <span class="text-muted">(<?= $_SESSION['login'] ?>)</span>
+					Bejelentkezett: <?= $_SESSION['csn'] . " " . $_SESSION['un'] ?> <span class="text-muted">(<?= $_SESSION['login'] ?>)</span>
 				</div>
 			<?php } ?>
 		</div>
