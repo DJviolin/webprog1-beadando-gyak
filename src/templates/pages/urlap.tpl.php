@@ -1,6 +1,6 @@
 <section class="col-md-8 offset-md-2">
     <h2>Megrendelő űrlap</h2>
-    <form method="post" action="index.php?oldal=urlap">
+    <form method="post" action="index.php?oldal=uzenetek">
         <div class="mb-3">
             <label for="nev" class="form-label">Név:</label>
             <input type="text" id="nev" name="nev" class="form-control" required>

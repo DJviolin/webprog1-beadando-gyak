@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 }
 ?>
 
-<div id="galeria" class="container">
-	<h2 class="mb-4">Galéria</h2>
+<div id="kepek" class="container">
+	<h2 class="mb-4">Képek</h2>
 
 	<div class="row mt-4">
 		<?php if (isset($_SESSION['login']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>

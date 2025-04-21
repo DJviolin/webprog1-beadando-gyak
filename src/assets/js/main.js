@@ -1,4 +1,4 @@
-if (document.getElementById('galeria')) {
+if (document.getElementById('kepek')) {
   const images = Array.from(document.querySelectorAll('.gallery-img'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
