@@ -33,7 +33,7 @@ if (isset($_SESSION['login'])) {
 
 <hr class="my-4">
 
-<div class="container mt-4">
+<div id="kapcsolat" class="container mt-4">
   <div class="row">
 	<p>Ha rendelni szeretne, írjon nekünk az alábbi űrlap segítségével. A kötelező mezők *-al jelöltek.</p>
     <div class="col-6">
@@ -41,11 +41,9 @@ if (isset($_SESSION['login'])) {
 			<!-- Név -->
 			<?php if (isset($_SESSION['login'])): ?>
 				<div class="mb-3">
-					<label class="form-label fw-bold">Teljes név (bejelentkezett felhasználó)</label>
-					<p class="form-control-plaintext ms-3"><?php echo $alapertelmezettNev; ?></p>
-					<!-- hidden input ha a felhasználó bejelentkezett -->
-					<input type="hidden" name="felhasznalo" value="<?php echo $_SESSION['login']; ?>">
-					<input type="hidden" name="nev" value="<?php echo $alapertelmezettNev; ?>">
+					<label for="nev" class="form-label fw-bold">Teljes név (bejelentkezett felhasználó)</label>
+					<input type="text" class="form-control" id="nev" name="nev"
+						value="<?php echo htmlspecialchars($_SESSION['csn'] . ' ' . $_SESSION['un']); ?>" readonly>
 				</div>
 			<?php else: ?>
 				<div class="mb-3">
@@ -56,9 +54,9 @@ if (isset($_SESSION['login'])) {
 			<!-- Email cím -->
 			<?php if (isset($_SESSION['email'])): ?>
 				<div class="mb-3">
-					<label class="form-label fw-bold">Email (bejelentkezett felhasználó)</label>
-					<p class="form-control-plaintext ms-3"><?php echo htmlspecialchars($_SESSION['email']); ?></p>
-					<input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+					<label for="email" class="form-label fw-bold">Email (bejelentkezett felhasználó)</label>
+					<input type="email" class="form-control" id="email" name="email"
+						value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly>
 				</div>
 			<?php else: ?>
 				<div class="mb-3">

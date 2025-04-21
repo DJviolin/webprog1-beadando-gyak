@@ -60,3 +60,30 @@ if (document.getElementById('kepek')) {
     });
   });
 }
+
+if (document.getElementById('kapcsolat')) {
+  const form = document.querySelector("form");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    form.addEventListener("submit", function (e) {
+      let hiba = [];
+
+      const nev = form.nev?.value.trim();
+      const email = form.email?.value.trim();
+      const telefon = form.telefon?.value.trim();
+      const fajta = form.fajta?.value;
+      const mennyiseg = parseInt(form.mennyiseg?.value);
+
+      if (nev === "") hiba.push("Név megadása kötelező.");
+      if (email === "" || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) hiba.push("Érvénytelen email cím.");
+      if (telefon === "") hiba.push("Telefonszám megadása kötelező.");
+      if (!fajta) hiba.push("Kérjük, válasszon fajtát.");
+      if (isNaN(mennyiseg) || mennyiseg < 1) hiba.push("A mennyiségnek legalább 1-nek kell lennie.");
+
+      if (hiba.length > 0) {
+        e.preventDefault();
+        alert(hiba.join("\n"));
+      }
+    });
+  });
+}
