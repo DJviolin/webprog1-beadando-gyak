@@ -19,11 +19,16 @@ if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['veze
             $ujra = "true";
         } else {
             // Ha nem létezik, akkor regisztráljuk
-            $sqlInsert = "insert into felhasznalok(id, csaladi_nev, uto_nev, felhasznalo, jelszo)
-                          values(0, :csaladinev, :utonev, :felhasznalo, :jelszo)";
+            $sqlInsert = "insert into felhasznalok(id, felhasznalo, email, csaladi_nev, uto_nev, jelszo)
+                          values(0, :felhasznalo, :email, :csaladinev, :utonev, :jelszo)";
             $stmt = $dbh->prepare($sqlInsert);
-            $stmt->execute(array(':csaladinev' => $_POST['vezeteknev'], ':utonev' => $_POST['utonev'],
-                                 ':felhasznalo' => $_POST['felhasznalo'], ':jelszo' => sha1($_POST['jelszo'])));
+            $stmt->execute(array(
+				':felhasznalo' => $_POST['felhasznalo'],
+				':email' => $_POST['email'],
+				':csaladinev' => $_POST['vezeteknev'],
+				':utonev' => $_POST['utonev'],
+				':jelszo' => sha1($_POST['jelszo']))
+			);
             if($count = $stmt->rowCount()) {
                 $newid = $dbh->lastInsertId();
                 $uzenet = "A regisztrációja sikeres.";

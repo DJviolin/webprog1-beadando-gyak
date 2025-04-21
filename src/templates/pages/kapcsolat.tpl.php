@@ -15,6 +15,12 @@ try {
 } catch (PDOException $e) {
 	$fajtakHtml = "<option value=\"\">" . htmlspecialchars($e->getMessage()) . "</option>";
 }
+
+// Ha be van jelentkezve a felhasználó, állítsuk be az alapértelmezett nevet
+$alapertelmezettNev = '';
+if (isset($_SESSION['login'])) {
+	$alapertelmezettNev = htmlspecialchars($_SESSION['csn'].' '.$_SESSION['un'].' ('.$_SESSION['login'].')');
+}
 ?>
 
 <div class="container">
@@ -22,46 +28,66 @@ try {
 		<h2 class="mb-4">Lépjen kapcsolatba velünk</h2>
 		<p>Tulajdonos: <strong>Lanti</strong></p>
 		<p>Email: <strong>webmaster[kukac]lanti.nethely.hu</strong></p>
-		<p>Ha rendelni szeretne, írjon nekünk az alábbi űrlap segítségével. Minden mező kitöltése kötelező.</p>
 	</div>
-</div >
+</div>
+
+<hr class="my-4">
 
 <div class="container mt-4">
   <div class="row">
+	<p>Ha rendelni szeretne, írjon nekünk az alábbi űrlap segítségével. A kötelező mezők *-al jelöltek.</p>
     <div class="col-6">
 		<form action="kapcsolat" method="post" novalidate>
-			<!-- Név (legyen az input helyén a felhazsnálónév, ha be van jelentkezve) -->
-			<div class="mb-3">
-				<label for="nev" class="form-label">Név</label>
-				<input type="text" class="form-control" id="nev" name="nev" required>
-			</div>
+			<!-- Név -->
+			<?php if (isset($_SESSION['login'])): ?>
+				<div class="mb-3">
+					<label class="form-label fw-bold">Teljes név (bejelentkezett felhasználó)</label>
+					<p class="form-control-plaintext ms-3"><?php echo $alapertelmezettNev; ?></p>
+					<!-- hidden input ha a felhasználó bejelentkezett -->
+					<input type="hidden" name="felhasznalo" value="<?php echo $_SESSION['login']; ?>">
+					<input type="hidden" name="nev" value="<?php echo $alapertelmezettNev; ?>">
+				</div>
+			<?php else: ?>
+				<div class="mb-3">
+					<label for="nev" class="form-label fw-bold">*Név</label>
+					<input type="text" class="form-control" id="nev" name="nev" required>
+				</div>
+			<?php endif; ?>
 			<!-- Email cím -->
+			<?php if (isset($_SESSION['email'])): ?>
+				<div class="mb-3">
+					<label class="form-label fw-bold">Email (bejelentkezett felhasználó)</label>
+					<p class="form-control-plaintext ms-3"><?php echo htmlspecialchars($_SESSION['email']); ?></p>
+					<input type="hidden" name="email" value="<?php echo $_SESSION['email']; ?>">
+				</div>
+			<?php else: ?>
+				<div class="mb-3">
+					<label for="email" class="form-label fw-bold">*Email cím</label>
+					<input type="email" class="form-control" id="email" name="email" required>
+				</div>
+			<?php endif; ?>
+			<!-- Telefon -->
 			<div class="mb-3">
-				<label for="email" class="form-label">Email cím</label>
-				<input type="email" class="form-control" id="email" name="email" required>
+				<label for="telefon" class="form-label fw-bold">*Telefon</label>
+				<input type="tel" class="form-control" id="telefon" name="telefon" required>
 			</div>
-			<!-- Telefon (nem kötelező) -->
+			<!-- Törökszegfű fajta -->
 			<div class="mb-3">
-				<label for="telefon" class="form-label">Telefon</label>
-				<input type="tel" class="form-control" id="telefon" name="telefon">
-			</div>
-			<!-- Törökszegfű fajták -->
-			<div class="mb-3">
-				<label for="fajta" class="form-label">Törökszegfű fajta</label>
+				<label for="fajta" class="form-label fw-bold">*Törökszegfű fajta</label>
 				<select class="form-control" id="fajta" name="fajta" required>
 					<option value="">Válasszon</option>
 					<?php echo $fajtakHtml; ?>
 				</select>
 			</div>
-			<!-- Mennyiség (db) -->
+			<!-- Mennyiség -->
 			<div class="mb-3">
-				<label for="mennyiseg" class="form-label">Mennyiség (db)</label>
+				<label for="mennyiseg" class="form-label fw-bold">*Mennyiség (db)</label>
 				<input type="number" class="form-control" id="mennyiseg" name="mennyiseg" min="1" required>
 			</div>
 			<!-- Üzenet -->
 			<div class="mb-3">
-				<label for="uzenet" class="form-label">Üzenet</label>
-				<textarea class="form-control" id="uzenet" name="uzenet" rows="5" required></textarea>
+				<label for="uzenet" class="form-label fw-bold">Üzenet</label>
+				<textarea class="form-control" id="uzenet" name="uzenet" rows="5"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">Üzenet küldése</button>
 		</form>

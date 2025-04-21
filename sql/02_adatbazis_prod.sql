@@ -5,6 +5,7 @@ CREATE TABLE `felhasznalok` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role` ENUM('admin', 'user') NOT NULL DEFAULT 'user',
   `felhasznalo` varchar(12) NOT NULL DEFAULT '',
+  `email` varchar(45) NOT NULL DEFAULT '',
   `csaladi_nev` varchar(45) NOT NULL DEFAULT '',
   `uto_nev` varchar(45) NOT NULL DEFAULT '',
   `jelszo` varchar(255) NOT NULL DEFAULT '',
@@ -13,10 +14,10 @@ CREATE TABLE `felhasznalok` (
 ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-INSERT INTO `felhasznalok` (`role`, `felhasznalo`, `csaladi_nev`, `uto_nev`, `jelszo`) VALUES
-('admin', 'Admin', 'Teszt', 'Admin', sha1('Admin')),
-('user', 'User1', 'Teszt', 'User_1', sha1('User1')),
-('user', 'User2', 'Teszt', 'User_2', sha1('User2'));
+INSERT INTO `felhasznalok` (`role`, `felhasznalo`, `email`, `csaladi_nev`, `uto_nev`, `jelszo`) VALUES
+('admin', 'Admin', 'admin@lanti.nethely.hu', 'Teszt', 'Admin', sha1('Admin')),
+('user', 'User1', 'user1@lanti.nethely.hu', 'Teszt', 'User_1', sha1('User1')),
+('user', 'User2', 'user2@lanti.nethely.hu', 'Teszt', 'User_2', sha1('User2'));
 
 DROP TABLE IF EXISTS `keszlet`;
 CREATE TABLE `keszlet` (
@@ -44,7 +45,7 @@ CREATE TABLE `uzenetek` (
   `telefon` varchar(45) NOT NULL,
   `fajta` varchar(100) NOT NULL,
   `mennyiseg` int(10) unsigned NOT NULL,
-  `uzenet` text NOT NULL,
+  `uzenet` text,
   `kuldes_ideje` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 )
@@ -52,5 +53,5 @@ ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `uzenetek` (`felhasznalo`, `nev`, `email`, `telefon`, `fajta`, `mennyiseg`, `uzenet`) VALUES
-('User1', 'Teszt User_1', 'email1@domain.org', '+36123456789', 'Sweet Black Cherry (Dianthus Barbatus)', 100, 'Első üzenet.')
+('User1', 'Teszt User_1', 'email1@domain.org', '+36123456789', 'Sweet Black Cherry (Dianthus Barbatus)', 100, NULL),
 (NULL, 'Teszt Vendég', 'email2@domain.org', '+36223456789', 'Amazon Neon Cherry (Dianthus Barbatus)', 300, 'Második üzenet.');
