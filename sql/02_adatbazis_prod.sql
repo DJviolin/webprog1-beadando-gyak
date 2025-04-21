@@ -15,9 +15,9 @@ ENGINE = InnoDB
 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `felhasznalok` (`role`, `felhasznalo`, `email`, `csaladi_nev`, `uto_nev`, `jelszo`) VALUES
-('admin', 'Admin', 'admin@lanti.nethely.hu', 'Teszt', 'Admin', sha1('Admin')),
-('user', 'User1', 'user1@lanti.nethely.hu', 'Teszt', 'User_1', sha1('User1')),
-('user', 'User2', 'user2@lanti.nethely.hu', 'Teszt', 'User_2', sha1('User2'));
+('admin', 'Admin', 'admin@domain.org', 'Teszt', 'Admin', sha1('Admin')),
+('user', 'User1', 'user1@domain.org', 'Teszt', 'User_1', sha1('User1')),
+('user', 'User2', 'user2@domain.org', 'Teszt', 'User_2', sha1('User2'));
 
 DROP TABLE IF EXISTS `keszlet`;
 CREATE TABLE `keszlet` (

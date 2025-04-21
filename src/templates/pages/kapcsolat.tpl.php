@@ -27,7 +27,7 @@ if (isset($_SESSION['login'])) {
 	<div class="row">
 		<h2 class="mb-4">Lépjen kapcsolatba velünk</h2>
 		<p>Tulajdonos: <strong>Lanti</strong></p>
-		<p>Email: <strong>webmaster[kukac]lanti.nethely.hu</strong></p>
+		<p>Email: <strong>webmaster[kukac]domain.org</strong></p>
 	</div>
 </div>
 
