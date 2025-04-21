@@ -1,0 +1,91 @@
+configs:
+  config_user_inc_php:
+    content: |
+      <?php
+      $$cfg['Lang'] = 'en';
+      $$cfg['LoginCookieValidity'] = 86400;
+      $$cfg['ShowPhpInfo'] = true;
+  db_root_password:
+    content: "secret"
+  zz_php_ini:
+    content: |
+      post_max_size = 256M
+      session.gc_maxlifetime = 86400
+      upload_max_filesize = 256M
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
+
+volumes:
+  # app_images:
+  mariadb:
+  phpmyadmin:
+
+services:
+
+### MariaDB ####################################################################
+# https://hub.docker.com/_/mariadb
+  mariadb:
+    image: mariadb:11.7.2-noble
+    volumes:
+      - mariadb:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+      - TZ=Europe/Budapest
+    configs:
+      - source: db_root_password
+        target: /run/secrets/db_root_password
+    networks:
+      - backend
+      - frontend
+
+### PhpMyAdmin #################################################################
+# https://hub.docker.com/_/phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin:5.2.2-apache
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mariadb
+      - PMA_PASSWORD_FILE=/run/secrets/db_root_password
+      - PMA_USER=root
+      - TZ=Europe/Budapest
+    volumes:
+      - phpmyadmin:/sessions
+    configs:
+      - source: config_user_inc_php
+        target: /etc/phpmyadmin/config.user.inc.php
+      - source: db_root_password
+        target: /run/secrets/db_root_password
+      - source: zz_php_ini
+        target: /usr/local/etc/php/conf.d/zz-php.ini
+    ports:
+      - 8080:80
+    depends_on:
+      - mariadb
+    networks:
+      - backend
+
+### PHP Web Server #############################################################
+# https://hub.docker.com/_/php
+  php:
+    image: php:8.4.6-apache-bookworm
+  app:
+    build:
+      context: .
+    environment:
+      - TZ=Europe/Budapest
+    # volumes:
+    #   - app_images:/var/www/html/images
+    configs:
+      - source: zz_php_ini
+        target: /usr/local/etc/php/conf.d/zz-php.ini
+    ports:
+      - 8000:80
+    depends_on:
+      - mariadb
+    networks:
+      - frontend
