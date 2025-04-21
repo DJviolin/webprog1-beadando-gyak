@@ -30,7 +30,7 @@ try {
   <div class="row">
     <div class="col-6">
 		<form action="kapcsolat" method="post" novalidate>
-			<!-- Név -->
+			<!-- Név (legyen az input helyén a felhazsnálónév, ha be van jelentkezve) -->
 			<div class="mb-3">
 				<label for="nev" class="form-label">Név</label>
 				<input type="text" class="form-control" id="nev" name="nev" required>
@@ -39,6 +39,11 @@ try {
 			<div class="mb-3">
 				<label for="email" class="form-label">Email cím</label>
 				<input type="email" class="form-control" id="email" name="email" required>
+			</div>
+			<!-- Telefon (nem kötelező) -->
+			<div class="mb-3">
+				<label for="telefon" class="form-label">Telefon</label>
+				<input type="tel" class="form-control" id="telefon" name="telefon">
 			</div>
 			<!-- Törökszegfű fajták -->
 			<div class="mb-3">

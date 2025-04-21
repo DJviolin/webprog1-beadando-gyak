@@ -34,3 +34,23 @@ INSERT INTO `keszlet` (`fajta`, `szin`, `magassag`, `viragzas`) VALUES
 ('Amazon Neon Cherry (Dianthus Barbatus)', 'Bíbor', '40 cm', 'Május - Július'),
 ('Sweet Black Cherry (Dianthus Barbatus)', 'Sötét vörös', '45 cm', 'Május - Június'),
 ('Sweet Deep Pink Maxine (Dianthus Barbatus)', 'Rózsaszín', '50 cm', 'Június - Július');
+
+DROP TABLE IF EXISTS `uzenetek`;
+CREATE TABLE `uzenetek` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `felhasznalo` varchar(12),
+  `nev` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefon` varchar(45) NOT NULL,
+  `fajta` varchar(100) NOT NULL,
+  `mennyiseg` int(10) unsigned NOT NULL,
+  `uzenet` text NOT NULL,
+  `kuldes_ideje` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+INSERT INTO `uzenetek` (`felhasznalo`, `nev`, `email`, `telefon`, `fajta`, `mennyiseg`, `uzenet`) VALUES
+('User1', 'Teszt User_1', 'email1@domain.org', '+36123456789', 'Sweet Black Cherry (Dianthus Barbatus)', 100, 'Első üzenet.')
+(NULL, 'Teszt Vendég', 'email2@domain.org', '+36223456789', 'Amazon Neon Cherry (Dianthus Barbatus)', 300, 'Második üzenet.');
