@@ -1,10 +1,18 @@
 <?php
+$dev_env = getenv('DEV_ENVIRONMENT') === 'true';
+
 $APP_CONFIG = [
-    'db' => [
-        'dsn' => 'mysql:host=mariadb;dbname=webprog1_beadando_gyak;charset=utf8mb4',
-        'user' => 'root',
-        'pass' => 'secret'
-	],
+	'db' => $dev_env
+		? [
+			'dsn' => 'mysql:host=mariadb;dbname=webprog1_beadando_gyak;charset=utf8mb4',
+			'user' => 'root',
+			'pass' => 'secret'
+		]
+		: [
+			'dsn' => 'mysql:host=localhost;dbname=lanti_adatb1;charset=utf8mb4',
+			'user' => 'lanti_adatb1',
+			'pass' => 'webprog1'
+		],
 	'sitename' => [
 		'cim' => 'Törökszegfű kertészet',
 		'motto' => 'Friss virág mindenkinek!'

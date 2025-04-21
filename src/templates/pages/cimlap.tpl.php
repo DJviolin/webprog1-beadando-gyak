@@ -9,7 +9,7 @@
 	<div class="col-md-6">
 		<div class="ratio ratio-16x9">
 			<video controls>
-				<source src="./videos/2896140-hd_1280_720_24fps.mp4" type="video/mp4">
+				<source src="./videos/2896140-hd_1280_720_24fps_5sec.mp4" type="video/mp4">
 				A böngészője nem támogatja a videó lejátszást.
 			</video>
 		</div>
