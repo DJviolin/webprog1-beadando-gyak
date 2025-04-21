@@ -74,14 +74,16 @@
 
 	<hr class="my-4">
 
-	<h2 class="mb-3">Elérhetőségünk a térképen</h2>
-	<div class="ratio ratio-21x9">
-		<iframe
-			src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11996.159141341803!2d19.604137152319748!3d46.76278214950528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1shu!2shu!4v1745174270725!5m2!1shu!2shu"
-			style="border:0;"
-			allowfullscreen=""
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-		></iframe>
+	<div class="row">
+		<h2 class="mb-3">Elérhetőségünk a térképen</h2>
+		<div class="ratio ratio-21x9">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11996.159141341803!2d19.604137152319748!3d46.76278214950528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1shu!2shu!4v1745174270725!5m2!1shu!2shu"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
+		</div>
 	</div>
 </div>
