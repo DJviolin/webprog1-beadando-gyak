@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 	<?php endif; ?>
 
 	<div class="row">
-		<p>A képek a szerző engedélye nélküli felhasználása minden esetben tilos! Ebbe beletartoznak az automatizált szoftverek is, például crawler-ek (kereső motorok, mesterséges intelligencia) stb.</p>
+		<p>A képek csak a szerző engedélyével felhasználhatók! Ebbe beletartoznak az automatizált szoftverek is, például crawler-ek (kereső motorok, mesterséges intelligencia) stb.</p>
 		<p>Fotók: &copy; <?= 'Copyright '.date("Y").'.' ?> <a href="https://lantosistvan.pixieset.com/">Lantos István</a></p>
 	</div>
 
