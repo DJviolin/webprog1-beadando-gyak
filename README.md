@@ -4,7 +4,7 @@
 
 Fejlesztői környezetben a projekt futtatásához [Docker Engine](https://docs.docker.com/engine/install/) és [Docker Compose](https://docs.docker.com/compose/)-ra van szükség.
 
-Windows-on [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) és [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)-re szükséges.
+Windows-on [Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/) és [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) szükséges.
 
 **Környezeti változó fájl létrehozása:**
 
