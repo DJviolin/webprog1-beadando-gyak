@@ -9,7 +9,8 @@
 
 	<div class="row">
 		<h2 class="mb-3">Videós bemutató</h2>
-		<div class="col-md-6">
+		<div class="col-md-6 mb-3">
+			<!-- Add bottom padding 10px -->
 			<div class="ratio ratio-16x9">
 				<video controls>
 					<source src="./videos/2896140-hd_1280_720_24fps_5sec.mp4" type="video/mp4">
@@ -17,7 +18,7 @@
 				</video>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 mb-3">
 			<div class="ratio ratio-16x9">
 				<iframe
 					src="https://www.youtube.com/embed/b8BMeO2bgEc?si=U1J-lVEuYScm3eHR"
