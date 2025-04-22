@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
 							<label for="kep" class="form-label">Kép feltöltése</label>
 							<input class="form-control" type="file" name="kep" id="kep" accept="image/*" required>
 						</div>
+						<input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
 						<button type="submit" class="btn btn-primary">Feltöltés</button>
 					</form>
 				</div>

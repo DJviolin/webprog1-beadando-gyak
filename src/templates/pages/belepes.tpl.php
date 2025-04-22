@@ -11,6 +11,7 @@
 					<label for="jelszo" class="form-label">Jelszó</label>
 					<input type="password" class="form-control" id="jelszo" name="jelszo" required>
 				</div>
+				<input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
 				<button type="submit" name="belepes" class="btn btn-primary">Bejelentkezés</button>
 			</form>
 		</div>
@@ -43,6 +44,7 @@
 					<label for="jelszo2" class="form-label">Jelszó ismét</label>
 					<input type="password" class="form-control" id="jelszo2" name="jelszo2" required>
 				</div>
+				<input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
 				<button type="submit" name="regisztracio" class="btn btn-primary">Regisztráció</button>
 			</form>
 		</div>

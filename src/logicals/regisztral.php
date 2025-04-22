@@ -1,4 +1,10 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!verifyCSRFToken($_POST['csrf_token'] ?? '')) {
+        die('Érvénytelen CSRF token!');
+    }
+}
+
 if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['vezeteknev']) && isset($_POST['utonev'])) {
     try {
         // Kapcsolódás

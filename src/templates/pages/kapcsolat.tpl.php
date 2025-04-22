@@ -84,6 +84,7 @@ try {
 				<label for="uzenet" class="form-label fw-bold">Üzenet</label>
 				<textarea class="form-control" id="uzenet" name="uzenet" rows="5"></textarea>
 			</div>
+			<input type="hidden" name="csrf_token" value="<?= $csrfToken ?>">
 			<button type="submit" class="btn btn-primary">Üzenet küldése</button>
 		</form>
 	</div>

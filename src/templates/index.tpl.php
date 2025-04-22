@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include('./includes/csrf.inc.php');
+$csrfToken = generateCSRFToken();
+?>
 <?php if(file_exists('./logicals/'.$keres['fajl'].'.php')) { include("./logicals/{$keres['fajl']}.php"); } ?>
 <!DOCTYPE html>
 <html lang="hu">
