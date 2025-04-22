@@ -15,12 +15,6 @@ try {
 } catch (PDOException $e) {
 	$fajtakHtml = "<option value=\"\">" . htmlspecialchars($e->getMessage()) . "</option>";
 }
-
-// Ha be van jelentkezve a felhasználó, állítsuk be az alapértelmezett nevet
-$alapertelmezettNev = '';
-if (isset($_SESSION['login'])) {
-	$alapertelmezettNev = htmlspecialchars($_SESSION['csn'].' '.$_SESSION['un'].' ('.$_SESSION['login'].')');
-}
 ?>
 
 <div class="container">
