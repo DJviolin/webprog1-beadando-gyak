@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $telefon = trim($_POST['telefon'] ?? '');
     $fajta = trim($_POST['fajta'] ?? '');
     $mennyiseg = intval($_POST['mennyiseg'] ?? 0);
-    // $uzenet = trim($_POST['uzenet'] ?? '');
+    $form_uzenet = trim($_POST['uzenet'] ?? '');
 
     if ($nev === '') $hibak[] = "A név megadása kötelező.";
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $hibak[] = "Érvénytelen email cím.";
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					':telefon' => $telefon,
 					':fajta' => $fajta,
 					':mennyiseg' => $mennyiseg,
-					':uzenet' => $uzenet,
+					':uzenet' => $form_uzenet,
 				]);
 			} else {
 				$stmt = $dbh->prepare(
@@ -50,8 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 					':telefon' => $telefon,
 					':fajta' => $fajta,
 					':mennyiseg' => $mennyiseg,
-					':uzenet' => $uzenet,
+					':uzenet' => $form_uzenet,
 				]);
+			}
+
+			if ($stmt->rowCount()) {
+				$uzenet = "Az üzenet küldése sikeres.";
+				$uzenet_class = "alert-success";
+			} else {
+				$uzenet = "Az üzenet küldése nem sikerült.";
+				$uzenet_class = "alert-danger";
 			}
         } catch (PDOException $e) {
             $hibak[] = "Adatbázis hiba: " . $e->getMessage();

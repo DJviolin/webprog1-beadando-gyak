@@ -33,6 +33,9 @@ if (isset($_SESSION['login'])) {
 
 <hr class="my-4">
 
+<?php if (isset($uzenet) && $uzenet): ?>
+    <div class="alert <?= $uzenet_class ?> text-center"><?= $uzenet ?></div>
+<?php else: ?>
 <div id="kapcsolat" class="container mt-4">
   <div class="row">
 	<p>Ha rendelni szeretne, írjon nekünk az alábbi űrlap segítségével. A kötelező mezők *-al jelöltek.</p>
@@ -91,3 +94,4 @@ if (isset($_SESSION['login'])) {
 		</form>
 	</div>
 </div>
+<?php endif; ?>
