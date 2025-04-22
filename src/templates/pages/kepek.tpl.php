@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['kep'])) {
             $unique_name = uniqid('img_', true) . '.' . $imageFileType;
             $target_file = $target_dir . $unique_name;
             if (move_uploaded_file($_FILES["kep"]["tmp_name"], $target_file)) {
-                echo "<p>Sikeres feltöltés!</p>";
+                echo '<div class="alert alert-success text-center" role="alert">Sikeres feltöltés!</div>';
             } else {
-                echo "<p>Hiba történt a fájl mentésekor.</p>";
+                echo '<div class="alert alert-danger text-center" role="alert">Hiba történt a fájl mentésekor.</div>';
             }
         } else {
-            echo "<p>Ez nem egy valódi kép.</p>";
+            echo '<div class="alert alert-warning text-center" role="alert">Ez nem egy valódi kép.</div>';
         }
     } else {
-        echo "<p>Csak JPG, PNG vagy GIF képeket tölthetsz fel!</p>";
+        echo '<div class="alert alert-warning text-center" role="alert">Csak JPG, PNG vagy GIF képeket tölthetsz fel!</div>';
     }
 }
 ?>

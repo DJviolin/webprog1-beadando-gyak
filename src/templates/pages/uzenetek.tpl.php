@@ -33,7 +33,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
 		<?php if (isset($_SESSION['login'])): ?>
 			<h2 class="mb-4">Beérkezett üzenetek</h2>
 			<?php if (empty($uzenetek)): ?>
-				<div class="alert alert-info">Még nem érkezett üzenet.</div>
+				<div class="alert alert-info" role="alert">Még nem érkezett üzenet.</div>
 			<?php else: ?>
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered">
@@ -67,7 +67,7 @@ if (isset($_SESSION['login']) && isset($_SESSION['role'])) {
 				</div>
 			<?php endif; ?>
 		<?php else: ?>
-			<div class="alert alert-info text-center fw-bold shadow-sm">
+			<div class="alert alert-info text-center fw-bold shadow-sm" role="alert">
 				Az üzenetek olvasása csak bejelentkezett felhasználók számára elérhető.
 			</div>
 		<?php endif; ?>

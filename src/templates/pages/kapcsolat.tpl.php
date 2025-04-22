@@ -28,7 +28,7 @@ try {
 <hr class="my-4">
 
 <?php if (isset($uzenet) && $uzenet): ?>
-    <div class="alert <?= $uzenet_class ?> text-center"><?= $uzenet ?></div>
+    <div class="alert <?= $uzenet_class ?> text-center" role="alert"><?= $uzenet ?></div>
 <?php else: ?>
 <div id="kapcsolat" class="container mt-4">
   <div class="row">
